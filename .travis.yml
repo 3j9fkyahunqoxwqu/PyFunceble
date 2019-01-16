@@ -44,19 +44,9 @@ script:
   - PyFunceble --clean
   - PyFunceble --clean-all
   - rm -R output && PyFunceble --directory-structure && ls -al output
-  - PyFunceble -ex -d github.com
-  - PyFunceble -ex -s -f .travis/lists/simple
-  - PyFunceble -ex --syntax -f .travis/lists/simple
-  - PyFunceble -ex -f .travis/lists/simple --json --plain
-  - PyFunceble -ex -f .travis/lists/simple # Normally, all inactive are not tested anymore.
-  - PyFunceble -ex --database -f .travis/lists/simple # And they will be retested.
-  - PyFunceble -ex --database --filter ".info$" -f .travis/lists/simple # Only .info domains should be tested.
-  - PyFunceble -ex --adblock -a -f .travis/lists/adblock
-  - PyFunceble -ex --link https://raw.githubusercontent.com/FadeMind/hosts.extras/master/UncheckyAds/hosts
-  - python .travis/complementary/basic_example.py
-  - python .travis/complementary/basic_example_syntax.py
-  - python .travis/complementary/advanced_example.py
-  - python .travis/complementary/loop_example.py
+  - PyFunceble -ex --syntax -f .travis/issues/19 --clean --database
+  - PyFunceble -ex -s -f .travis/issues/19 --clean --database
+  - PyFunceble -ex -a -f .travis/issues/19 --clean --database
 
 after_success:
   - coveralls
