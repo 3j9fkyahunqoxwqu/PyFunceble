@@ -45,8 +45,11 @@ script:
   - PyFunceble --clean-all
   - rm -R output && PyFunceble --directory-structure && ls -al output
   - PyFunceble -ex --syntax -f .travis/issues/19 --clean --database
+  - PyFunceble -ex --syntax -f .travis/issues/19 --clean --database -nw
   - PyFunceble -ex -s -f .travis/issues/19 --clean --database
+  - PyFunceble -ex -s -f .travis/issues/19 --clean --database -nw
   - PyFunceble -ex -a -f .travis/issues/19 --clean --database
+  - PyFunceble -ex -a -f .travis/issues/19 --clean --database -nw
 
 after_success:
   - coveralls
